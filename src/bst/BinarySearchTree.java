@@ -136,6 +136,21 @@ public class BinarySearchTree<T extends Comparable<T>> {
 	public void preOrderStack() {
 		Stack<BSTNode<T>> pre = new Stack<BSTNode<T>>();
 		
+		BSTNode<T> current = root;
+		
+		while(current != null || pre.size() > 0)
+		{
+			
+			while(current != null)
+			{
+				pre.push(current);
+				System.out.println(current.data);
+				current = current.leftChild;
+			}
+			
+			current = pre.pop();
+			current = current.rightChild;
+		}
 	}
 		
 
@@ -163,7 +178,22 @@ public class BinarySearchTree<T extends Comparable<T>> {
 	//Traverse the tree in an inorder fashion but using a stack
 	public void inOrderStack() {
 		Stack<BSTNode<T>> in = new Stack<BSTNode<T>>();
+		BSTNode<T> current = root;
 		
+		while(current != null || in.size() > 0)
+		{
+			while (current != null)
+			{
+				in.push(current);
+				current = current.leftChild;
+			}
+			
+			current = in.pop();
+			System.out.println(current.data);
+			
+			current = current.rightChild;
+			
+		}
 		
 	}
 	
@@ -195,7 +225,19 @@ public class BinarySearchTree<T extends Comparable<T>> {
 		Stack<BSTNode<T>> postHelper = new Stack<>();
 		if(root!=null) {
 			postHelper.push(root);
+			BSTNode<T> current = root;
 			while(!postHelper.isEmpty()) {
+				current = postHelper.pop();
+				post.push(current);
+				
+				if(current.leftChild != null) {
+					postHelper.push(current.leftChild);
+				}
+				if (current.rightChild != null)
+				{
+					postHelper.push(current.rightChild);
+				}
+				
 				//how should post and postHelper be updated?
 			}
 			
@@ -248,6 +290,8 @@ public class BinarySearchTree<T extends Comparable<T>> {
 		bst.postOrder();
 		System.out.println();
 		bst.postOrderStack();
+		System.out.println();
+		
 		
 		
 	}
