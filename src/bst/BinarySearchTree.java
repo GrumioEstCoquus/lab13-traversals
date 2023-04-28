@@ -270,7 +270,6 @@ public class BinarySearchTree<T extends Comparable<T>> {
 		bst.insert(7);
 		bst.insert(11);
 		bst.insert(2);
-		bst.insert(8);
 		bst.insert(15);
 		bst.insert(10);
 		bst.insert(3);
